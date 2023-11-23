@@ -159,7 +159,7 @@ const numOfQuartersReturned = (bill, price) => {
 
   let change = bill - price
 
-  let coinAmount = (change % 1)
+  let coinAmount = (change % 1).toFixed(2)
 
   // to get the number of quarters we take
   // the coinAmount and divide it by 0.25
@@ -186,10 +186,117 @@ const BillsAndCoinsReturned = (amtPaid, amtCost) => {
 
   // We are leaving out $2 bills, 50 cent pieces, and dollar coins for simplicity.
 
-  // For your change you receive  
+  // First we consider $100 bills received, then $20 bills received, and so on down to pennies received.
 
+  let change = amtPaid - amtCost
+
+  console.log(`You receive $${change.toFixed(2)} as change`)
+
+  // from our previous function, 
+  let coinAmount = (change % 1).toFixed(2)
+
+  // now we just need to get the wholeDollarsAmount:
+
+  wholeDollarsAmount = Math.round(change - coinAmount)
+
+  // how many 100s do we get back?
+  let hundreds = Math.floor(wholeDollarsAmount/100)
+  // console.log(hundreds)
+  // how many 20s?
+  // well for 20s, we see what we are left with after taking out the 100s from the change
+
+  if(hundreds > 1) {
+    console.log(`You receive ${hundreds} hundred dollar bills`)
+  } else if(hundreds > 0) {
+    console.log(`You receive 1 hundred dollar bill`)
+  }
+
+  wholeDollarsAmount -= hundreds*100
+
+  let twenties = Math.floor(wholeDollarsAmount/20)
+
+  if(twenties > 1) {
+    console.log(`You receive ${twenties} twenty dollar bills`)
+  } else if(twenties > 0) {
+    console.log(`You receive 1 twenty dollar bill`)
+  }
+
+  // for 10s, we see what we are left with after taking out the 100s and the 20s
+  wholeDollarsAmount -= twenties*20
+
+  let tens = Math.floor(wholeDollarsAmount/10)
+
+  if(tens > 1) {
+    console.log(`You receive ${tens} ten dollar bills`)
+  } else if(tens > 0) {
+    console.log(`You receive 1 ten dollar bill`)
+  }
+
+  // and so on...
+
+  wholeDollarsAmount -= tens*10
+
+  let fives = Math.floor(wholeDollarsAmount/5)
+
+  if(fives > 1) {
+    console.log(`You receive ${fives} five dollar bills`)
+  } else if(fives > 0) {
+    console.log(`You receive 1 five dollar bill`)
+  }
+
+  wholeDollarsAmount -= fives*5
+
+  let ones = wholeDollarsAmount
+
+  if(ones > 1) {
+    console.log(`You receive ${ones} one dollar bills`)
+  } else if(ones > 0) {
+    console.log(`You receive 1 one dollar bill`)
+  }
+
+  // and very similar logic for the coins received:
+
+  let quarters = Math.floor(coinAmount/0.25)
+
+  if(quarters > 1) {
+    console.log(`You receive ${quarters} quarters`)
+  } else if(quarters > 0) {
+    console.log(`You receive 1 quarter`)
+  }
+
+  coinAmount -= quarters*0.25
+
+  let dimes = Math.floor(coinAmount/0.10)
+
+  if(dimes > 1) {
+    console.log(`You receive ${dimes} dimes`)
+  } else if(dimes > 0) {
+    console.log(`You receive 1 dime`)
+  }
+
+  coinAmount -= dimes*0.10
+
+  let nickels = Math.floor(coinAmount/0.05)
+
+  if(nickels > 1) {
+    console.log(`You receive ${nickels} nickels`)
+  } else if(nickels > 0) {
+    console.log(`You receive 1 nickel`)
+  }
+
+  coinAmount -= nickels*0.05
+
+  let pennies = Math.floor(coinAmount/0.01)
+
+  if(pennies > 1) {
+    console.log(`You receive ${pennies} pennies`)
+  } else if(pennies > 0) {
+    console.log(`You receive 1 penny`)
+  }
 
 }
+
+BillsAndCoinsReturned(1.21, 1.21)
 
 
 
