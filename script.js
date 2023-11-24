@@ -181,7 +181,8 @@ gradeComment(65)
 gradeComment(58)
 gradeComment(23)
 
-console.log(` 2.   Write a function that prints out multiples of 10 up to a given input (argument)
+console.log(`
+2.   Write a function that prints out multiples of 10 up to a given input (argument)
 
 Applying the following code:
 
@@ -223,11 +224,13 @@ const numOfQuartersReturned = (bill, price) => {
 
   let numOfQuarters = Math.floor(coinAmount/0.25)
 
-  console.log(\`You receive \${numOfQuarters} quarters in your change\`)
+  console.log(\`You receive \${numOfQuarters} quarters in your change\\n\`)
 
 }
 
 numOfQuartersReturned(14, 11)
+numOfQuartersReturned(75.87, 11.01)
+numOfQuartersReturned(5, 3.26)
 
 Yield's the following output:
 
@@ -247,11 +250,13 @@ const numOfQuartersReturned = (bill, price) => {
 
   let numOfQuarters = Math.floor(coinAmount/0.25)
 
-  console.log(`You receive ${numOfQuarters} quarters in your change`)
+  console.log(`You receive ${numOfQuarters} quarters in your change\n`)
 
 }
 
 numOfQuartersReturned(14, 11)
+numOfQuartersReturned(75.87, 11.01)
+numOfQuartersReturned(5, 3.26)
 
 console.log(`
 4.    Write a function that prints out how many bills you would recieve in change after paying a certain amount.  Return in as large denominations as possible. Parameters should be amount paind and amount cost
@@ -382,7 +387,7 @@ const BillsAndCoinsReturned = (amtPaid, amtCost) => {
   } else if(pennies > 0) {
     console.log(\`1 penny\`)
   }
-  console.log(\`\n\`)
+  console.log(\`\\n\`)
 }
 
 BillsAndCoinsReturned(1.21, 1.21)
